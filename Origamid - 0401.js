@@ -33,3 +33,110 @@ function Pessoa (nome, idade) {
     this.addClass = this.selected.forEach (function (a) {a.classList.add(addClass)});
     this.removeClass = this.selected.forEach (function (a) {a.classList.remove(removeClass)});
   }
+
+
+// Exercicio corrido e atualizado conforme instruções: 
+
+  function Aula (elementos) {
+    const select = document.querySelectorAll(elementos);
+    this.selected = select;
+    console.log(this.selected);
+    this.add = function (addClass) {
+      this.selected.forEach ((a) => {
+        a.classList.add(addClass)});
+    }
+    this.rem = function (removeClass) {
+      this.selected.forEach ((a) => {
+        a.classList.remove(removeClass)})
+    }
+  }
+
+
+// Utilizando o foreach na array abaixo,
+// some os valores de Taxa e os valores de Recebimento
+
+const Transacoes = [
+  {
+    descricao: 'Taxa do Pão',
+    valor: 'R$ 39',
+  },
+  {
+    descricao: 'Taxa do Mercado',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 99',
+  },
+  {
+    descricao: 'Taxa do Banco',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 49',
+  },
+];
+
+let somaT = 0;
+let somaR = 0;
+
+
+Transacoes.forEach((a) => {
+  const taxa = "Taxa";
+  const recebimento = "Recebimento";
+
+  a.valor = a.valor.replace(/['R$']+/g, '');
+  let valorA = parseInt(a.valor);
+
+    if (a.descricao.includes(taxa)) {
+      somaT += valorA;
+    } else {
+      somaR += valorA;
+    } 
+})
+
+console.log(`A taxa total cobrada será de R$${somaT} e o total do recebimento do cliente será de R$${somaR}, formando um total de R$${somaT+somaR}`);
+
+// Retorne uma array com a lista abaixo
+const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta';
+
+const transportesA = transportes.split(';');
+
+console.log(transportesA);
+
+// Substitua todos os span's por a's
+const html = `<ul>
+                <li><span>Sobre</span></li>
+                <li><span>Produtos</span></li>
+                <li><span>Contato</span></li>
+              </ul>`;
+
+
+const htmlA = html.replace(/['span']+/g, 'a')
+console.log (htmlA);
+
+// Retorne o último caracter da frase
+const frase = 'Melhor do ano!';
+
+console.log(frase.charAt(--frase.length));
+
+// Retorne o total de taxas
+const Transacoes2 = ['Taxa do Banco', '   TAXA DO PÃO', '  taxa do mercado', 'depósito Bancário', 'TARIFA especial'];
+
+let taxaT = 0;
+
+Transacoes2.forEach((a) => {
+  aA = a.toLowerCase(); 
+  aA = aA.trim();
+  const taxa = 'taxa';
+  console.log(aA)
+  if (aA.includes(taxa)) {
+    ++taxaT
+  }
+})
+
+console.log(`A operação contem um total de ${taxaT} taxas`)
+
+
+
